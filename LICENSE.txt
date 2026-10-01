@@ -1,0 +1,13 @@
+Janzeer node — End User License
+
+Copyright (c) 2026 Janzeer. All rights reserved.
+
+This software is distributed in binary form only. You may run it, on any number of machines, to operate a node
+on a Janzeer network. You may not reverse engineer, decompile, modify or redistribute it, or use it to run a
+network other than a Janzeer network, without written permission.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. Running a validator commits real funds (the
+registration deposit is non-refundable) and requires you to keep your node key safe; the authors are not liable
+for any loss.
+
+Contact: legal@janzeer.org — https://janzeer.org
