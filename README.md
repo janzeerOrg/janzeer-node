@@ -53,4 +53,4 @@ Run exactly one node per key, and back up `data/config.json` — it is the node'
 
 ## Security
 
-Found a vulnerability? Please write to **janzeeer@proton.me** before disclosing it publicly.
+Found a vulnerability? Please write to **security@janzeer.org** before disclosing it publicly.
