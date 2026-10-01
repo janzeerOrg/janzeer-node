@@ -5,6 +5,7 @@ and the API, and — once registered on-chain — validates. This repository hol
 distributed in binary form (see [LICENSE.txt](LICENSE.txt)).
 
 - Website: <https://janzeer.org> · Explorer: <https://explorer.janzeer.org>
+- Announcements (releases and protocol upgrades): <https://t.me/janzeerorg>
 - Documentation (Node Operator Guide, EN/AR): <https://github.com/janzeerorg/janzeer-docs> and <https://janzeer.org/docs>
 - SDKs: [TypeScript](https://github.com/janzeerorg/janzeer-sdk-ts) · [Dart](https://github.com/janzeerorg/janzeer-sdk-dart) · [Kotlin](https://github.com/janzeerorg/janzeer-sdk-kotlin)
 
