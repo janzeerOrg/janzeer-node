@@ -1,0 +1,50 @@
+name: Validator grant
+description: Apply for the registration deposit (2,000 JNZ + the 3 JNZ fee) — first 10 outside operators of a reachable, synced mainnet node.
+title: "Validator grant: <your node key, first 8 characters>"
+labels: ["validator-grant"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Rules and how it works: https://janzeer.org/validators#grant — first 10 operators, one grant per operator, until 2027-01-01.
+        The queue is public: order of arrival is order of grants. We connect to your node today and again in 7 days; then the transfer goes out and is linked here.
+  - type: input
+    id: node-key
+    attributes:
+      label: Node key
+      description: "`nodeKey` from `curl -s http://localhost:7019/api/v1/info` on your node (66 hex characters)."
+      placeholder: "02ab…"
+    validations:
+      required: true
+  - type: input
+    id: p2p
+    attributes:
+      label: Public P2P address
+      description: "host:port where the internet can reach your node's P2P port (default 9199). A DNS name or an IP."
+      placeholder: "node.example.org:9199"
+    validations:
+      required: true
+  - type: input
+    id: wallet
+    attributes:
+      label: Wallet address for the grant
+      description: "The Janzeer address (0x…, 40 hex characters) that will receive 2,003 JNZ and send the registration."
+      placeholder: "0x…"
+    validations:
+      required: true
+  - type: input
+    id: os
+    attributes:
+      label: Operating system and bundle version
+      placeholder: "Debian 12, janzeer-node-0.1.0-mainnet-linux-x64"
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmations
+      options:
+        - label: This is my only node and my only application; I am not a project anchor.
+          required: true
+        - label: I know the deposit is non-refundable and that a validator silent on its slots is ejected at the next epoch.
+          required: true
+        - label: I will post the hash of my registration transaction here within 7 days of receiving the grant.
+          required: true

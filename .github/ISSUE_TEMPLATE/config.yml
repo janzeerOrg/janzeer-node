@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security
+    url: mailto:security@janzeer.org
+    about: Vulnerabilities go to security@janzeer.org, not to a public issue.
+  - name: Announcements
+    url: https://t.me/janzeerorg
+    about: Releases and network notices.

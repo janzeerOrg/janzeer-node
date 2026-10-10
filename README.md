@@ -51,6 +51,14 @@ A started node is watch-only. To validate: open its P2P port, read its key
 (deposit 2000 JNZ, non-refundable, plus a 3 JNZ fee). The node joins the producer set at an epoch boundary.
 Run exactly one node per key, and back up `data/config.json` — it is the node's identity.
 
+### Validator grant — the first deposit is on the project
+
+The deposit can only come from the game or from the project, so the **first 10 outside operators** who run a reachable,
+synced mainnet node for 7 days get the 2,000 JNZ deposit (plus the 3 JNZ fee) from the ecosystem wallet, in the open on
+the explorer. One grant per operator, until 2027-01-01. Rules: https://janzeer.org/validators#grant — apply with the
+[Validator grant](../../issues/new?template=validator-grant.yml) issue (the queue is public), or write the same three
+lines to info@janzeer.org.
+
 ## Security
 
 Found a vulnerability? Please write to **security@janzeer.org** before disclosing it publicly.
