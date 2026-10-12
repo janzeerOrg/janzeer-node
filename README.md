@@ -33,6 +33,21 @@ libraries, the network's public `genesis.json` and a launcher. Requirements: 64-
 disk and an NTP-synchronised clock. `README.txt` inside the bundle covers ports, PostgreSQL, the systemd unit and
 upgrades.
 
+### Arch Linux
+
+The same binary as a pacman package: it installs under `/opt/janzeer-node`, adds a `janzeer` system user, keeps the
+ledger and your node identity in `/var/lib/janzeer-node`, and ships the systemd unit.
+
+```bash
+sudo pacman -U janzeer-node-bin-<version>-1-x86_64.pkg.tar.zst     # from Releases; or build it: cd packaging/arch && makepkg -si
+sudo systemctl enable --now janzeer-node
+journalctl -fu janzeer-node
+```
+
+`janzeer-node` on the command line runs it by hand as your own user (data in `~/.local/share/janzeer-node`). Ports or
+PostgreSQL: `systemctl edit janzeer-node` and set the variables listed in `/opt/janzeer-node/README.txt`.
+The package wraps the published Linux tarball byte for byte; its `PKGBUILD` is in [`packaging/arch/`](packaging/arch/).
+
 ## Mainnet
 
 | | |

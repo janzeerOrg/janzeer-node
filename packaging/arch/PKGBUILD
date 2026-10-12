@@ -1,0 +1,36 @@
+# Maintainer: Janzeer <janzeeer@proton.me>
+# Arch Linux package of the public Janzeer node bundle (binary release; the node source is not public).
+# Rendered by release/build-arch-package.sh from the Linux bundle of the same version — do not edit by hand.
+pkgname=janzeer-node-bin
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Janzeer blockchain node (mainnet): one native binary, embedded database, explorer + REST/JSON-RPC API on :7019"
+arch=('x86_64')
+url="https://janzeer.org"
+license=('LicenseRef-Janzeer-EULA')
+depends=('glibc' 'zlib')
+optdepends=('postgresql: external database instead of the embedded one (DB_URL in the unit)'
+            'chrony: keeps the clock within the 250 ms block production needs')
+provides=('janzeer-node')
+conflicts=('janzeer-node')
+install=janzeer-node-bin.install
+options=('!strip' '!debug')
+_bundle="janzeer-node-${pkgver}-mainnet-linux-x64"
+source=("https://github.com/janzeerOrg/janzeer-node/releases/download/v${pkgver}/${_bundle}.tar.gz"
+        'janzeer-node.service' 'janzeer-node.sysusers' 'janzeer-node.tmpfiles' 'janzeer-node' 'janzeer-node-bin.install')
+sha256sums=('38e2b5fb554f3bead2cf070152e835bcd6f34147b57895597c09805642b93121'
+            'b9b3ae8f9665eb36e38a09b4a0ceef2b4a28a6be97b3c84f8509777b012b564b' 'd52f5f856cd2c63d0c68a5fddae7a68ea251470f398295c3dcf330c1fa053b88' '30328b4c6ed0fdaa097545249731128c9b22c1ff8280da9a1e2fc9e7712f4f36' 'a38d7c5a8027a4a5969091c6b7be31276919898758519143806eafbb6037b066' 'e05974d2683000f384ecb5cdf434226801872c55b7e6465fc2c9ae5cb678a615')
+
+package() {
+  local app="$pkgdir/opt/janzeer-node"
+  install -d "$app"
+  install -Dm755 "$srcdir/$_bundle/janzeer" "$app/janzeer"
+  install -Dm755 "$srcdir/$_bundle/start.sh" "$app/start.sh"
+  install -Dm644 "$srcdir/$_bundle"/lib*.so "$app/"
+  install -Dm644 "$srcdir/$_bundle"/{genesis.json,VERSION,README.txt,SHA256SUMS} "$app/"
+  install -Dm644 "$srcdir/$_bundle/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -Dm755 "$srcdir/janzeer-node" "$pkgdir/usr/bin/janzeer-node"
+  install -Dm644 "$srcdir/janzeer-node.service" "$pkgdir/usr/lib/systemd/system/janzeer-node.service"
+  install -Dm644 "$srcdir/janzeer-node.sysusers" "$pkgdir/usr/lib/sysusers.d/janzeer-node.conf"
+  install -Dm644 "$srcdir/janzeer-node.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/janzeer-node.conf"
+}

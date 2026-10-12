@@ -1,0 +1,26 @@
+# Janzeer node — systemd unit of the Arch package. Binary and genesis under /opt/janzeer-node (read-only),
+# ledger + node identity under /var/lib/janzeer-node (back up config.json: it is your validator key).
+# Ports or PostgreSQL: systemctl edit janzeer-node → [Service] Environment=JANZEER_P2P_PORT=… / DB_URL=… (see /opt/janzeer-node/README.txt)
+[Unit]
+Description=Janzeer node
+Documentation=https://janzeer.org/docs
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=janzeer
+Group=janzeer
+WorkingDirectory=/opt/janzeer-node
+Environment=JANZEER_DATA_DIR=/var/lib/janzeer-node
+ExecStart=/opt/janzeer-node/start.sh
+Restart=on-failure
+RestartSec=5
+LimitNOFILE=65536
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

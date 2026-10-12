@@ -1,0 +1,16 @@
+post_install() {
+  cat <<'MSG'
+  Janzeer node installed.
+    start:     systemctl enable --now janzeer-node        (explorer + API: http://localhost:7019)
+    sync:      curl -s localhost:7019/api/v1/info          -> "syncStatus":"SYNCHRONIZED" when caught up
+    data:      /var/lib/janzeer-node — config.json is your node identity (validator key): back it up, keep it secret
+    validator: open 9199/tcp, then register the nodeKey from a Janzeer wallet (2000 JNZ deposit) — https://janzeer.org/validators
+    by hand:   janzeer-node   (data in ~/.local/share/janzeer-node)
+MSG
+}
+post_upgrade() {
+  echo "  Janzeer node upgraded — restart it: systemctl restart janzeer-node   (protocol version: /opt/janzeer-node/VERSION)"
+}
+post_remove() {
+  echo "  /var/lib/janzeer-node (ledger + node identity) was kept. Remove it yourself if you no longer need the key."
+}

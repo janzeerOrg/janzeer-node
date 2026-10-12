@@ -1,0 +1,5 @@
+#!/bin/sh
+# Janzeer node, run by hand as your own user (the service uses /var/lib/janzeer-node).
+# Ledger + node identity go to $JANZEER_DATA_DIR, default ~/.local/share/janzeer-node. Flags: /opt/janzeer-node/README.txt
+export JANZEER_DATA_DIR="${JANZEER_DATA_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/janzeer-node}"
+exec /opt/janzeer-node/start.sh "$@"
