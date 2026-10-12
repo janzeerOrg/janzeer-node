@@ -7,7 +7,7 @@ distributed in binary form (see [LICENSE.txt](LICENSE.txt)).
 - Website: <https://janzeer.org> · Explorer: <https://explorer.janzeer.org>
 - Announcements (releases and protocol upgrades): <https://t.me/janzeerorg>
 - Documentation (Node Operator Guide, EN/AR): <https://github.com/janzeerorg/janzeer-docs> and <https://janzeer.org/docs>
-- SDKs: [TypeScript](https://github.com/janzeerorg/janzeer-sdk-ts) · [Dart](https://github.com/janzeerorg/janzeer-sdk-dart) · [Kotlin](https://github.com/janzeerorg/janzeer-sdk-kotlin)
+- SDKs: [TypeScript](https://github.com/janzeerorg/janzeer-sdk-ts) · [Dart](https://github.com/janzeerorg/janzeer-sdk-dart) · [Kotlin](https://github.com/janzeerorg/janzeer-sdk-kotlin) · [Python](https://github.com/janzeerorg/janzeer-sdk-python) · [Go](https://github.com/janzeerorg/janzeer-sdk-go)
 
 ## Download
 
@@ -15,6 +15,7 @@ Take the archive for your system from [Releases](../../releases) and **verify it
 
 ```bash
 sha256sum -c SHA256SUMS            # macOS: shasum -a 256 -c SHA256SUMS
+# Windows (PowerShell): Get-FileHash janzeer-node-<version>-mainnet-windows-x64.zip -Algorithm SHA256
 ```
 
 The same SHA-256 values are printed on <https://janzeer.org/validators>. If they differ, do not run the file.
@@ -29,9 +30,15 @@ curl -s http://localhost:7019/api/v1/info        # "syncStatus":"SYNCHRONIZED" w
 ```
 
 No Java, no database server and no configuration are needed: the bundle is one native executable, its runtime
-libraries, the network's public `genesis.json` and a launcher. Requirements: 64-bit Linux, 1 GB of free RAM, 20 GB of
-disk and an NTP-synchronised clock. `README.txt` inside the bundle covers ports, PostgreSQL, the systemd unit and
+libraries, the network's public `genesis.json` and a launcher. Requirements: 64-bit Linux or Windows 10/11, 1 GB of free RAM,
+20 GB of disk and an NTP-synchronised clock. `README.txt` inside the bundle covers ports, PostgreSQL, the systemd unit and
 upgrades.
+
+### Windows
+
+Unzip `janzeer-node-<version>-mainnet-windows-x64.zip`, open the folder and run `start.cmd` (a plain Command Prompt is
+enough). The ledger and your node identity go to `data\` next to it; `README.txt` explains ports, PostgreSQL and how to
+run it as a service. Keep the same `data\` folder when you upgrade.
 
 ### Arch Linux
 
