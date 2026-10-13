@@ -30,9 +30,16 @@ curl -s http://localhost:7019/api/v1/info        # "syncStatus":"SYNCHRONIZED" w
 ```
 
 No Java, no database server and no configuration are needed: the bundle is one native executable, its runtime
-libraries, the network's public `genesis.json` and a launcher. Requirements: 64-bit Linux or Windows 10/11, 1 GB of free RAM,
+libraries, the network's public `genesis.json` and a launcher. Requirements: 64-bit Linux (x86-64 or arm64) or Windows 10/11, 1 GB of free RAM,
 20 GB of disk and an NTP-synchronised clock. `README.txt` inside the bundle covers ports, PostgreSQL, the systemd unit and
 upgrades.
+
+### Raspberry Pi (Linux arm64)
+
+The same node for 64-bit ARM: `janzeer-node-<version>-mainnet-linux-arm64.tar.gz`, built for the Cortex-A53 and up,
+so it runs on a Raspberry Pi 3, 4 or 5 under a 64-bit Raspberry Pi OS or Debian 12+ (`uname -m` must say `aarch64`).
+Install and run exactly as the Linux x86-64 bundle above; the systemd unit inside has the install lines in its header.
+A Pi with 1 GB of RAM runs the node, 2 GB or more is comfortable.
 
 ### Windows
 
