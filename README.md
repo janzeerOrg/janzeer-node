@@ -20,6 +20,17 @@ sha256sum -c SHA256SUMS            # macOS: shasum -a 256 -c SHA256SUMS
 
 The same SHA-256 values are printed on <https://janzeer.org/validators>. If they differ, do not run the file.
 
+From node 0.1.3 every release's `SHA256SUMS` is signed with the project's [minisign](https://jedisct1.github.io/minisign/)
+key, and the bundle's `update.sh` refuses an unsigned or tampered release. Public key (key id `9F798583B345AE01`):
+
+```
+RWQBrkWzg4V5n5wUBa9GNPpa95Z7WFT2EY5QrabMv/DP+KG+gJsPIgdr
+```
+
+```bash
+minisign -Vm SHA256SUMS -P RWQBrkWzg4V5n5wUBa9GNPpa95Z7WFT2EY5QrabMv/DP+KG+gJsPIgdr
+```
+
 ## Run
 
 ```bash
