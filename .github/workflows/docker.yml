@@ -48,7 +48,9 @@ jobs:
       - name: Smoke test
         run: |
           docker run -d --name smoke -e JANZEER_ROOT_NODES=127.0.0.1:1 -p 7019:7019 ${IMAGE}:smoke
-          for i in $(seq 1 60); do curl -fsS http://localhost:7019/api/v1/info/version && break; sleep 2; done
+          ok=0; for i in $(seq 1 90); do curl -fsS http://localhost:7019/api/v1/info/version >/dev/null 2>&1 && { ok=1; break; }; sleep 2; done
+          if [ "$ok" != 1 ]; then echo "node did not answer on 7019 — container log:"; docker logs smoke 2>&1 | tail -60; docker inspect -f 'exit={{.State.ExitCode}} running={{.State.Running}}' smoke; exit 1; fi
+          curl -fsS http://localhost:7019/api/v1/info/version
           curl -fsS http://localhost:7019/api/v1/info/version | grep -q '"${{ steps.v.outputs.version }}"'
           docker stop -t 30 smoke
       - name: Build and push x86-64 + arm64

@@ -38,6 +38,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
  && rm -rf /var/lib/apt/lists/* \
  && useradd -r -m -d /opt/janzeer -s /usr/sbin/nologin janzeer
 COPY --from=fetch --chown=janzeer:janzeer /fetch/bundle/ /opt/janzeer/
+# create the volume directories in the image so a fresh volume inherits the node user's ownership
+RUN install -d -o janzeer -g janzeer -m 700 /opt/janzeer/data /opt/janzeer/tmp
 USER janzeer
 WORKDIR /opt/janzeer
 # the ledger AND the node identity (config.json) live here — mount a volume, back it up; it is your validator key
