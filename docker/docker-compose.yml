@@ -1,0 +1,16 @@
+# Janzeer node — docker compose up -d ; the ledger and your node identity persist in the named volume.
+services:
+  janzeer:
+    image: ghcr.io/janzeerorg/janzeer-node:latest
+    container_name: janzeer
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:7019:7019"   # REST / JSON-RPC / explorer — keep private or put a reverse proxy in front
+      - "9199:9199"             # P2P — forward it on your router when you can
+    volumes:
+      - janzeer-data:/opt/janzeer/data
+    environment:
+      JANZEER_JAVA_OPTS: "-Xmx256m -XX:+ExitOnOutOfMemoryError"
+    stop_grace_period: 60s      # a clean stop skips the ledger check at the next start
+volumes:
+  janzeer-data:

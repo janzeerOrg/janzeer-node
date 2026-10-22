@@ -45,6 +45,23 @@ libraries, the network's public `genesis.json` and a launcher. Requirements: 64-
 20 GB of disk and an NTP-synchronised clock. `README.txt` inside the bundle covers ports, PostgreSQL, the systemd unit and
 upgrades.
 
+### Docker
+
+The same bundle as an image, built by this repository's workflow from the **signed** release (the build verifies the
+minisign signature and the checksum, and fails otherwise), for x86-64 and arm64:
+
+```bash
+docker run -d --name janzeer --restart unless-stopped \
+  -p 127.0.0.1:7019:7019 -p 9199:9199 -v janzeer-data:/opt/janzeer/data \
+  ghcr.io/janzeerorg/janzeer-node:latest
+curl -s http://localhost:7019/api/v1/info        # "syncStatus":"SYNCHRONIZED" when caught up
+```
+
+Or `docker compose up -d` with [docker/docker-compose.yml](docker/docker-compose.yml). The volume holds the ledger **and
+your node identity** (`config.json`): back it up, never run two containers from the same volume. Upgrade = pull the new
+tag, stop the container (`docker stop -t 60`, a clean stop skips the ledger check), start it again on the same volume.
+Tags: `:<version>` (e.g. `:0.1.7`) and `:latest`. Dockerfile: [docker/Dockerfile](docker/Dockerfile).
+
 ### Raspberry Pi (Linux arm64)
 
 The same node for 64-bit ARM: `janzeer-node-<version>-mainnet-linux-arm64.tar.gz`, built for the Cortex-A53 and up,
