@@ -60,7 +60,7 @@ curl -s http://localhost:7019/api/v1/info        # "syncStatus":"SYNCHRONIZED" w
 Or `docker compose up -d` with [docker/docker-compose.yml](docker/docker-compose.yml). The volume holds the ledger **and
 your node identity** (`config.json`): back it up, never run two containers from the same volume. Upgrade = pull the new
 tag, stop the container (`docker stop -t 60`, a clean stop skips the ledger check), start it again on the same volume.
-Tags: `:<version>` (e.g. `:0.1.7`) and `:latest`. Dockerfile: [docker/Dockerfile](docker/Dockerfile).
+Tags: `:<version>` (e.g. `:0.1.8`) and `:latest`. Dockerfile: [docker/Dockerfile](docker/Dockerfile).
 
 ### Raspberry Pi (Linux arm64)
 

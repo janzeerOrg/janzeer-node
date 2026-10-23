@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: "Release version to package (e.g. 0.1.7)"
+        description: "Release version to package (e.g. 0.1.8)"
         required: true
       latest:
         description: "Also tag :latest"

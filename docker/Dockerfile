@@ -5,7 +5,7 @@
 # The build downloads the Linux bundle of the requested version for the target architecture (amd64 → x64, arm64 → arm64)
 # from GitHub Releases, verifies SHA256SUMS against the project's minisign key, then the archive against SHA256SUMS, and
 # refuses to build on any mismatch — exactly what an operator does by hand.
-ARG VERSION=0.1.7
+ARG VERSION=0.1.8
 ARG NETWORK=mainnet
 
 FROM debian:bookworm-slim AS fetch
