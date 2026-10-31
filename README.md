@@ -8,6 +8,7 @@ distributed in binary form (see [LICENSE.txt](LICENSE.txt)).
 - Announcements (releases and protocol upgrades): <https://t.me/janzeerorg>
 - Documentation (Node Operator Guide, EN/AR): <https://github.com/janzeerorg/janzeer-docs> and <https://janzeer.org/docs>
 - SDKs: [TypeScript](https://github.com/janzeerorg/janzeer-sdk-ts) · [Dart](https://github.com/janzeerorg/janzeer-sdk-dart) · [Kotlin](https://github.com/janzeerorg/janzeer-sdk-kotlin) · [Python](https://github.com/janzeerorg/janzeer-sdk-python) · [Go](https://github.com/janzeerorg/janzeer-sdk-go)
+- Command-line client `jz` (chain reads, live watch, encrypted wallet, send, `jz node status|update` for operators): <https://github.com/janzeerorg/janzeer-cli>
 
 ## Download
 
