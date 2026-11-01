@@ -8,7 +8,7 @@ distributed in binary form (see [LICENSE.txt](LICENSE.txt)).
 - Announcements (releases and protocol upgrades): <https://t.me/janzeerorg>
 - Documentation (Node Operator Guide, EN/AR): <https://github.com/janzeerorg/janzeer-docs> and <https://janzeer.org/docs>
 - SDKs: [TypeScript](https://github.com/janzeerorg/janzeer-sdk-ts) · [Dart](https://github.com/janzeerorg/janzeer-sdk-dart) · [Kotlin](https://github.com/janzeerorg/janzeer-sdk-kotlin) · [Python](https://github.com/janzeerorg/janzeer-sdk-python) · [Go](https://github.com/janzeerorg/janzeer-sdk-go)
-- Command-line client `jz` (chain reads, live watch, encrypted wallet, send, `jz node status|update` for operators): <https://github.com/janzeerorg/janzeer-cli>
+- Command-line client `jz` (chain reads, live watch, encrypted wallet, send, `jz node status|update` for operators): <https://github.com/janzeerorg/janzeer-cli> — since 0.1.11 every bundle ships it next to the `janzeer` binary (`./jz node status`)
 
 ## Download
 
@@ -61,7 +61,7 @@ curl -s http://localhost:7019/api/v1/info        # "syncStatus":"SYNCHRONIZED" w
 Or `docker compose up -d` with [docker/docker-compose.yml](docker/docker-compose.yml). The volume holds the ledger **and
 your node identity** (`config.json`): back it up, never run two containers from the same volume. Upgrade = pull the new
 tag, stop the container (`docker stop -t 60`, a clean stop skips the ledger check), start it again on the same volume.
-Tags: `:<version>` (e.g. `:0.1.10`) and `:latest`. Dockerfile: [docker/Dockerfile](docker/Dockerfile).
+Tags: `:<version>` (e.g. `:0.1.11`) and `:latest`. Dockerfile: [docker/Dockerfile](docker/Dockerfile).
 
 ### Raspberry Pi (Linux arm64)
 
